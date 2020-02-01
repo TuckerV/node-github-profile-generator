@@ -1,31 +1,33 @@
-const colors = {
-  green: {
-    wrapperBackground: "#E6E1C3",
-    headerBackground: "#C1C72C",
-    headerColor: "black",
-    photoBorderColor: "#black"
-  },
-  blue: {
-    wrapperBackground: "#5F64D3",
-    headerBackground: "#26175A",
-    headerColor: "white",
-    photoBorderColor: "#73448C"
-  },
-  pink: {
-    wrapperBackground: "#879CDF",
-    headerBackground: "#FF8374",
-    headerColor: "white",
-    photoBorderColor: "#FEE24C"
-  },
-  red: {
-    wrapperBackground: "#DE9967",
-    headerBackground: "#870603",
-    headerColor: "white",
-    photoBorderColor: "white"
-  }
-};
-
 function generateHTML(data) {
+  const colors = {
+    Green: {
+      wrapperBackground: "#E6E1C3",
+      headerBackground: "#C1C72C",
+      headerColor: "black",
+      photoBorderColor: "#black"
+    },
+    Blue: {
+      wrapperBackground: "#5F64D3",
+      headerBackground: "#26175A",
+      headerColor: "white",
+      photoBorderColor: "#73448C"
+    },
+    Pink: {
+      wrapperBackground: "#879CDF",
+      headerBackground: "#FF8374",
+      headerColor: "white",
+      photoBorderColor: "#FEE24C"
+    },
+    Red: {
+      wrapperBackground: "#DE9967",
+      headerBackground: "#870603",
+      headerColor: "white",
+      photoBorderColor: "white"
+    }
+  };
+  console.log('\n' + "... We are now in generateHTML ...")
+  console.log(data.color);
+  console.log(colors[data.color].wrapperBackground);
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -170,5 +172,58 @@ function generateHTML(data) {
             zoom: .75; 
           } 
          }
-      </style>`
-        }
+      </style>
+      <head>
+      <body>
+            <div class="wrapper">
+                <div class = "photo-header">
+                    <img src="${data.avatar_url}">
+                    <h1> Hi! </h1>
+                    <h2> My name is ${data.name}!</h2>
+                    <h5> Currently @ ${data.company}</h5>
+                        <div class="links-nav">
+                            <ul>
+                            <li class = "nav-link"><a href="${data.location}"><i class="fas fa-location-arrow"></i> ${data.location}</a></li>
+                            <li class = "nav-link"><a href="${data.html_url}"><i class="fab fa-github-alt"></i> Github</a></li>
+                            <li class = "nav-link"><a href="${data.blog}"><i class="fas fa-rss"></i> Blog</a></li>
+                            </ul>
+                        </div>
+                </div>
+                <main>
+                    <div class="container">
+                        <h3> ${data.bio} </h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <h4>Public Repositories</h4>
+                                    <h5>${data.public_repos}</h5>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <h4>Followers</h4>
+                                    <h5>${data.followers}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <h4>GitHub Stars</h4>
+                                    <h5>${data.gitStarsLength}</h5>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <h4>Following</h4>
+                                    <h5>${data.following}</h5>
+                                </div>
+                            </div>
+                    </div>
+                </main>
+                <div class="wrapper">
+                </div>
+            </div>
+        </body>`
+}
+module.exports = generateHTML;

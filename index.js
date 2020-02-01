@@ -4,7 +4,8 @@ const inquirer = require("inquirer");
 const axios = require("axios");
 const puppeteer = require("puppeteer");
 const generateHTML = require("./generateHTML.js");
-const html;
+let html;
+let profileFinal;
 
 // User is prompted in Terminal for their Github Username
 function getName() {
@@ -52,25 +53,31 @@ async function init() {
     let profile = await getGithub(username);
     console.log('\n'+'getGithub Response...')
     console.log(profile);
+    let { avatar_url, name, company, bio, public_repos, followers, following, html_url, blog, location } = profile;
     profile.color = color;
+    console.log("profile.color should be " + profile.color);
 
     let star = await getStarLength(username);
     console.log('\n'+'getStarLength Response...')
     console.log(star);
     profile.star = star;
 
+    profileFinal = username;
+    profile.star = star;
     html = generateHTML(profile);
+
+    genPDF();
 }
 
 async function genPDF() {
     try {
         
-        const page = await browser.newPage();
         const browser = await puppeteer.launch();
+        const page = await browser.newPage();
         await page.setContent(html);
         await page.emulateMedia("screen");
         await page.pdf({
-            path: `${username}.pdf.pdf`,
+            path: `${profileFinal}.pdf`,
             printBackground: true,
             format: "A4"
         })
