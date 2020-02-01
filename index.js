@@ -5,6 +5,7 @@ const axios = require("axios");
 const puppeteer = require("puppeteer");
 const generateHTML = require("./generateHTML.js");
 
+// User is prompted in Terminal for their Github Username
 function getName() {
     const username = inquirer.prompt({
         type: "input",
@@ -13,6 +14,7 @@ function getName() {
     })
     return username
 }
+// User is prompted in Terminal for their favorite color
 function getColor() {
     const color = inquirer.prompt({
         type: "list",
@@ -22,11 +24,25 @@ function getColor() {
     });
     return color
 }
+// 
+function getGithub(username) {
+
+    return axios.get(`https://api.github.com/users/${username}`).then((res) => {
+        // console.log(res.data);
+        console.log(res.data);
+        return res.data
+    })
+    
+};
+
+
 async function init() {
     let {username} = await getName();
     console.log("Your username is " + username);
     let {color} = await getColor();
     console.log("Your favorite color is " + color);
+
+    let {data} = await getGithub(username);
 }
 
 init();
