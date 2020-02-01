@@ -22,7 +22,7 @@ function getColor() {
         type: "list",
         message: "What is your favorite color?",
         name: "color",
-        choices: ["Red", "Yellow", "Green", "Blue"]
+        choices: ["Green", "Blue", "Pink", "Red"]
     });
     return color
 }
@@ -51,14 +51,14 @@ async function init() {
     console.log("Your favorite color is " + color);
 
     let profile = await getGithub(username);
-    console.log('\n'+'getGithub Response...')
+    console.log('\n'+'... getGithub Response ...')
     console.log(profile);
     let { avatar_url, name, company, bio, public_repos, followers, following, html_url, blog, location } = profile;
     profile.color = color;
     console.log("profile.color should be " + profile.color);
 
     let star = await getStarLength(username);
-    console.log('\n'+'getStarLength Response...')
+    console.log('\n'+'... getStarLength Response ...')
     console.log(star);
     profile.star = star;
 
