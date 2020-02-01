@@ -29,12 +29,18 @@ function getGithub(username) {
 
     return axios.get(`https://api.github.com/users/${username}`).then((res) => {
         // console.log(res.data);
-        console.log(res.data);
         return res.data
     })
     
 };
+function getStar(username) {
 
+    return axios.get(`https://api.github.com/users/${username}/starred`).then((res) => {
+        // console.log(res.data);
+        return res.data
+    })
+    
+};
 
 async function init() {
     let {username} = await getName();
@@ -42,7 +48,13 @@ async function init() {
     let {color} = await getColor();
     console.log("Your favorite color is " + color);
 
-    let {data} = await getGithub(username);
+    let data = await getGithub(username);
+    console.log('\n'+'getGithub Response...')
+    console.log(data);
+    
+    let star = await getStar(username);
+    console.log('\n'+'getStar Response...')
+    console.log(star);
 }
 
 init();
