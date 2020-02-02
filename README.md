@@ -2,21 +2,17 @@
 Homework 9 for UU Full-flex bootcamp
 
 Tucker Vassau
+![Gif](https://raw.githubusercontent.com/TuckerV/node-github-profile-generator/master/application-demonstration.gif)
 
 ## description
 
 What why how.
-This project was a RESPONSIVE website that displays a portfolio about myself, discussing my interests and hobbies, and a little bit about my career. Currently the project only displays placeholders, as the pages will be edited in a future time.
-
-I made this project so that I could have a simple and straightforward way to show employers and people who I am as a developer, and what kind of projects I have accomplished. This also allows people who visit the site to contact me with whatever they might need.
-
-I was motivated to build this project to create a presence online, to which I can refer people to if they wanted to learn more about my work. 
+This project was a demonstration of how to pull a users Github profile, and to generate a pdf page from an html framework.
 
 ### features
 
-The features in the project include 3 buttons in the top right corner that allow the user to click and navegate to each of the three pages of the portfolio. 
 
-On the Contact page there are three input boxes in which the user can input text according to their contact information, and there is a button below that will submit the text to myself (feature to be implemented in a future iteration).
+The features of this project include using terminal to pull a users Github information, and generating a pdf from that pulled data. 
 
 ## Table of Contents
 
@@ -30,11 +26,23 @@ On the Contact page there are three input boxes in which the user can input text
 
 ## Installation
 
-In order to access this project, you must access github.com and find TuckerV, and download the portfolio repository. One the repo is downloaded, you can open the files in browser, and use them. 
+Download the repo from Github.
+
+In Git, cd into the application folder.
+
+npm install
+
+Once the required packages have installed, run the javascript by using:
+
+node index.js
+
+Answer the prompts in the terminal
+
+The generated pdf will show up in the application folder, where it can be opened in another program.
 
 ## Usage
 
-This project is designed to be used as a source for finding and seeing the various projects that I accomplish and work on throughout my time in the bootcamp.
+This program is to be used as a way to generate a short overview of the contents of a persons Github. 
 
 ## Credits
 
