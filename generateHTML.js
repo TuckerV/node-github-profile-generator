@@ -25,9 +25,9 @@ function generateHTML(data) {
       photoBorderColor: "white"
     }
   };
-  console.log('\n' + "... We are now in generateHTML ...")
-  console.log(data.color);
-  console.log(colors[data.color].wrapperBackground);
+  console.log('\n' + "... Generating HTML ...")
+  // console.log(data.color);
+  // console.log(colors[data.color].wrapperBackground);
   return `<!DOCTYPE html>
 <html lang="en">
    <head>

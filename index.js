@@ -46,20 +46,20 @@ function getStarLength(username) {
 
 async function init() {
     let {username} = await getName();
-    console.log("Your username is " + username);
+    // console.log("Your username is " + username);
     let {color} = await getColor();
-    console.log("Your favorite color is " + color);
+    // console.log("Your favorite color is " + color);
 
     let profile = await getGithub(username);
-    console.log('\n'+'... getGithub Response ...')
-    console.log(profile);
+    // console.log('\n'+'... getGithub Response ...')
+    // console.log(profile);
     let { avatar_url, name, company, bio, public_repos, followers, following, html_url, blog, location } = profile;
     profile.color = color;
-    console.log("profile.color should be " + profile.color);
+    // console.log("profile.color should be " + profile.color);
 
     let star = await getStarLength(username);
-    console.log('\n'+'... getStarLength Response ...')
-    console.log(star);
+    // console.log('\n'+'... getStarLength Response ...')
+    // console.log(star);
     profile.star = star;
 
     profileFinal = username;
@@ -75,7 +75,11 @@ async function genPDF() {
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
         await page.setContent(html);
-        await page.emulateMedia("screen");
+        await page.setViewport({
+            width: 1440,
+            height: 900,
+            deviceScaleFactor: 2
+          });
         await page.pdf({
             path: `${profileFinal}.pdf`,
             printBackground: true,
