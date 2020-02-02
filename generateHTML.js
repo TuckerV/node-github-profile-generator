@@ -51,7 +51,7 @@ function generateHTML(data) {
          margin: 0;
          }
          html, body, .wrapper {
-         height: 100%;
+         height: auto;
          }
          .wrapper {
          background-color: ${colors[data.color].wrapperBackground};
@@ -210,7 +210,7 @@ function generateHTML(data) {
                             <div class="col">
                                 <div class="card">
                                     <h4>GitHub Stars</h4>
-                                    <h5>${data.gitStarsLength}</h5>
+                                    <h5>${data.star}</h5>
                                 </div>
                             </div>
                             <div class="col">
